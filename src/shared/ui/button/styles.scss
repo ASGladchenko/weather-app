@@ -1,0 +1,67 @@
+.btn {
+  position: relative;
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: filter 0.3s ease, transform 0.1s ease;
+  font-size: 12px;
+  font-weight: 500;
+  overflow: hidden;
+  cursor: pointer;
+
+  outline: none;
+
+  &--primary {
+    --bg: #{$btn-gradient};
+    --text-color: #{$white};
+  }
+  &:not(:disabled):not(.btn--loading):focus,
+  &:not(:disabled):not(.btn--loading):hover {
+    filter: brightness(1.2);
+  }
+
+  &:not(:disabled):not(.btn--loading):active {
+    transform: scale(0.95);
+  }
+
+  &--filled {
+    padding: 6px 12px;
+    border: none;
+
+    background: var(--bg);
+    color: var(--text-color);
+  }
+
+  &--loading {
+    cursor: wait;
+
+    .btn__loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: $overlay-bg;
+
+      &:before {
+        content: '';
+
+        top: 50%;
+        left: 50%;
+
+        width: 16px;
+        height: 16px;
+        border: 2px solid $white;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spinner 2s linear infinite;
+      }
+    }
+  }
+
+  &:not(.btn--loading):disabled {
+    cursor: not-allowed;
+    filter: brightness(0.7);
+  }
+}

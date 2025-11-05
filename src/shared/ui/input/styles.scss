@@ -1,0 +1,19 @@
+.input {
+  padding: 4px 6px;
+  width: 100%;
+  border: 1px solid $gray-light;
+  background-color: $purple-light;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: $purple-gray;
+
+  &:focus {
+    outline: none;
+    border-color: 1px solid $white;
+
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.5);
+  }
+}
