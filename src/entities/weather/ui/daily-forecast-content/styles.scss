@@ -1,0 +1,28 @@
+.daily-forecast-card {
+  width: 100%;
+
+  &-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $purple-gray;
+    margin-bottom: 12px;
+  }
+
+  .daily-forecast-card-content {
+    width: 100%;
+    max-width: 100%;
+
+    overflow: hidden;
+    overflow-x: auto;
+
+    .daily-area-chart {
+      min-width: 760px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &-title {
+      font-size: 14px;
+    }
+  }
+}

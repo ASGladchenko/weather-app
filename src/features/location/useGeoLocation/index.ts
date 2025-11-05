@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { showMessage } from '@/shared/ui';
 import { useWeatherStore } from '@/entities';
 
-import { GEOLOCATION_ERRORS } from './constants';
+import { GEOLOCATION_ERRORS } from '../constants';
 
 export interface GeolocationPosition {
   lat: number;
@@ -13,7 +13,7 @@ export interface GeolocationPosition {
 export function useGeolocation() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const { fetchWeatherByCoords } = useWeatherStore();
+  const { fetchWeather } = useWeatherStore();
 
   useEffect(() => {
     if (!('geolocation' in navigator)) {
@@ -29,7 +29,7 @@ export function useGeolocation() {
         } = pos;
 
         try {
-          await fetchWeatherByCoords(latitude, longitude);
+          await fetchWeather({ lat: latitude, lon: longitude });
         } catch {
         } finally {
           setIsLoading(false);

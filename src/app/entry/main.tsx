@@ -1,4 +1,4 @@
-// import { StrictMode } from 'react';
+import { StrictMode } from 'react';
 
 import { createRoot } from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
@@ -13,8 +13,8 @@ import '../styles/main.scss';
 const browserRouter = createBrowserRouter(routes);
 
 createRoot(document.getElementById('root')!).render(
-  <>
+  <StrictMode>
     <RouterProvider router={browserRouter} />
     <ToastContainer />
-  </>
+  </StrictMode>
 );

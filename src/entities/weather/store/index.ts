@@ -14,12 +14,12 @@ interface WeatherState {
   data: NormalizeWeatherDataType | null;
   currentController: AbortController | null;
 }
+type FetchWeatherParams = { city: string } | { lat: number; lon: number };
 
 interface WeatherActions {
   reset: () => void;
   cancelRequest: () => void;
-  fetchWeatherByCity: (city: string) => Promise<void>;
-  fetchWeatherByCoords: (lat: number, lon: number) => Promise<void>;
+  fetchWeather: (params: FetchWeatherParams) => Promise<void>;
 }
 
 type WeatherStore = WeatherState & WeatherActions;
@@ -34,7 +34,7 @@ const initialState: WeatherState = {
 export const useWeatherStore = create<WeatherStore>((set, get) => ({
   ...initialState,
 
-  fetchWeatherByCoords: async (lat: number, lon: number) => {
+  fetchWeather: async (params: FetchWeatherParams) => {
     const { currentController } = get();
     if (currentController) {
       currentController.abort();
@@ -49,91 +49,22 @@ export const useWeatherStore = create<WeatherStore>((set, get) => ({
     });
     let geo;
 
-    try {
-      const geoResponse = await weatherApi.getCityByGeoCode(lat, lon, {
-        signal: controller.signal,
-      });
-      geo = geoResponse?.[0];
-
-      if (!geo) {
-        set({
-          error: 'null',
-          status: 'idle',
-          currentController: null,
-        });
-        showMessage.error(WEATHER_ERROR.BY_COORDS);
-        return;
-      }
-    } catch (error) {
-      if (isAbortError(error)) {
-        set({
-          status: 'idle',
-          currentController: null,
-        });
-        return;
-      }
-      set({
-        status: 'error',
-        currentController: null,
-        error: getErrorMessage(error),
-      });
-
-      return;
-    }
+    const isCity = 'city' in params;
 
     try {
-      const response = await weatherApi.getOneCallDailyByCoords(lat, lon, {
-        signal: controller.signal,
-      });
-
-      if (controller.signal.aborted) {
-        return;
-      }
-      const weatherData = normalizeWeatherData(geo, response);
-
-      set({
-        status: 'idle',
-        data: weatherData,
-        currentController: null,
-      });
-    } catch (error) {
-      if (isAbortError(error)) {
-        set({
-          status: 'idle',
-          currentController: null,
+      if (isCity) {
+        const geoResponse = await weatherApi.getGeoCodeByCity(params.city, {
+          signal: controller.signal,
         });
-        return;
+
+        geo = geoResponse?.[0];
+      } else {
+        const geoResponse = await weatherApi.getCityByGeoCode(params.lat, params.lon, {
+          signal: controller.signal,
+        });
+
+        geo = geoResponse?.[0];
       }
-
-      set({
-        status: 'error',
-        currentController: null,
-        error: getErrorMessage(error),
-      });
-    }
-  },
-
-  fetchWeatherByCity: async (city: string) => {
-    const { currentController } = get();
-    if (currentController) {
-      currentController.abort();
-    }
-
-    const controller = new AbortController();
-
-    set({
-      error: null,
-      status: 'loading',
-      currentController: controller,
-    });
-
-    let geo;
-
-    try {
-      const geoResponse = await weatherApi.getGeoCodeByCity(city, {
-        signal: controller.signal,
-      });
-      geo = geoResponse?.[0];
 
       if (!geo) {
         set({
@@ -142,7 +73,7 @@ export const useWeatherStore = create<WeatherStore>((set, get) => ({
           currentController: null,
         });
 
-        showMessage.error(WEATHER_ERROR.BY_CITY);
+        showMessage.error(isCity ? WEATHER_ERROR.BY_CITY : WEATHER_ERROR.BY_COORDS);
 
         return;
       }
@@ -173,8 +104,6 @@ export const useWeatherStore = create<WeatherStore>((set, get) => ({
       }
 
       const weatherData = normalizeWeatherData(geo, response);
-
-      console.log({ weatherData });
 
       set({
         status: 'idle',
