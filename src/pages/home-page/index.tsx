@@ -1,10 +1,11 @@
-import { SearchForm } from '@/features';
+import { WeatherWidget } from '@/widgets';
+
+import './styles.scss';
 
 export const HomePage = () => {
   return (
-    <div>
-      Home
-      <SearchForm />
-    </div>
+    <section className="main-page">
+      <WeatherWidget />
+    </section>
   );
 };

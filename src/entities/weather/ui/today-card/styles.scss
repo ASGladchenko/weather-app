@@ -1,0 +1,7 @@
+.card-wrapper.today-wrapper {
+  min-height: 190px;
+
+  @media screen and (max-width: 768px) {
+    min-height: 160px;
+  }
+}

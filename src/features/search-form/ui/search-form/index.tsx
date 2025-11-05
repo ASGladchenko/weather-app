@@ -8,7 +8,8 @@ import './styles.scss';
 
 export const SearchForm = ({ className }: { className?: string }) => {
   const [value, setValue] = useState('');
-  const { fetchWeatherByCity, status } = useWeatherStore();
+
+  const { fetchWeather, status } = useWeatherStore();
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -19,9 +20,10 @@ export const SearchForm = ({ className }: { className?: string }) => {
         return;
       }
 
-      await fetchWeatherByCity(value);
+      await fetchWeather({ city: value.trim() });
+      setValue(value.trim());
     },
-    [fetchWeatherByCity, value]
+    [fetchWeather, value]
   );
 
   const handleInputChange = useCallback((value: string) => {

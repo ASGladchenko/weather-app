@@ -1,0 +1,69 @@
+.week-forecast-card {
+  width: 100%;
+
+  &-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $purple-gray;
+    margin-bottom: 12px;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+
+    .week-forecast-card-item {
+      padding: 4px;
+
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      color: $purple-gray;
+      border-bottom: 1px solid $purple;
+
+      &:first-child {
+        border-top: 1px solid $purple;
+      }
+
+      .week-forecast-card-date {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .week-forecast-card-icon {
+        width: 30px;
+        height: 30px;
+
+        filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.4));
+      }
+
+      .week-forecast-card-temp-wrapper {
+        width: 100%;
+
+        display: flex;
+        gap: 0 16px;
+        justify-content: flex-start;
+        align-items: center;
+
+        font-size: 12px;
+      }
+
+      .week-forecast-card-summary {
+        font-size: 12px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &-title {
+      font-size: 14px;
+    }
+
+    .week-forecast-card-item {
+      .week-forecast-card-date {
+        font-size: 12px;
+      }
+    }
+  }
+}

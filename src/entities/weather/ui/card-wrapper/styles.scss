@@ -1,0 +1,63 @@
+.card-wrapper {
+  position: relative;
+  min-height: 188px;
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border: none;
+  border-radius: 16px;
+  box-shadow: $main-shadow;
+
+  background: $purple-light;
+
+  .card-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $overlay-bg;
+
+    &:before {
+      content: '';
+
+      top: 50%;
+      left: 50%;
+
+      width: 24px;
+      height: 24px;
+      border: 3px solid $white;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spinner 2s linear infinite;
+    }
+  }
+
+  .card-error {
+    color: $red;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .card-empty {
+    color: $gray;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 12px;
+    min-height: 158px;
+
+    .card-empty,
+    .card-error {
+      font-size: 12px;
+    }
+  }
+}
