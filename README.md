@@ -1,133 +1,131 @@
 # 🌤️ Weather App
 
-## 👋 Добро пожаловать!
+## 👋 Welcome!
 
-Это приложение демонстрирует:
+This application demonstrates:
 
-- 🏗️ **Feature-Sliced Design** архитектуру
-- 🔥 **React 18** с современными хуками
-- 💎 **TypeScript** для типобезопасности
-- ⚡ **Vite** для быстрой разработки
-- 🗂️ **Zustand** для управления состоянием
+- 🏗️ **Feature-Sliced Design** architecture
+- 🔥 **React 18** with modern hooks
+- 💎 **TypeScript** for type safety
+- ⚡ **Vite** for fast development
+- 🗂️ **Zustand** for state management
 
-## ✨ Особенности
+## ✨ Features
 
-- 📍 **Автоопределение местоположения** через Geolocation API
-- 🌡️ **Текущая погода** с детальной информацией
-- 📊 **12-часовой прогноз** с интерактивным графиком
-- 📅 **7-дневный прогноз** с подробностями
+- 📍 **Auto location detection** via Geolocation API
+- 🌡️ **Current weather** with detailed information
+- 📊 **12-hour forecast** with interactive chart
+- 📅 **7-day forecast** with details
 
-### Предварительные требования
+### Prerequisites
 
-- Node.js 20.19+ или 22.12+
-- npm или yarn
+- Node.js 20.19+ or 22.12+
+- npm or yarn
 
-### Установка
+### Installation
 
-```bash
-# Клонировать репозиторий
 git clone https://github.com/ASGladchenko/weather-app.git
 cd weather-app
 
-# Установить зависимости
 npm install
 
-# Создать .env файл и добавить API ключ
-echo "VITE_OPENWEATHER_API_KEY=ваш_api_ключ_openweather" > .env
+echo "VITE\*OPENWEATHER_API_KEY=your_openweather_api_key" > .env
 
-# Запустить dev сервер
 npm run dev
-```
-
-### Получение API ключа OpenWeather
-
-1. Зарегистрируйтесь на [OpenWeatherMap](https://openweathermap.org/api)
-2. Получите бесплатный API ключ
-3. Добавьте его в файл `.env`
-
-### Основные технологии
-
-- **React 18** - UI библиотека с современными возможностями
-- **TypeScript 5.9** - статическая типизация
-- **Vite** - быстрый build tool
-- **Zustand** - легковесное управление состоянием
-
-### Дополнительные библиотеки
-
-- **React Router v7** - маршрутизация с lazy loading
-- **Recharts** - красивые графики
-- **React Toastify** - уведомления
-- **Axios** - HTTP клиент
-
-## 📁 Архитектура проекта
 
 ```
+
+### Getting OpenWeather API Key
+
+1. Register at [OpenWeatherMap](https://openweathermap.org/api)
+2. Get a free API key
+3. Add it to the `.env` file
+
+### Core Technologies
+
+- **React 18** - UI library with modern capabilities
+- **TypeScript 5.9** - static typing
+- **Vite** - fast build tool
+- **Zustand** - lightweight state management
+
+### Additional Libraries
+
+- **React Router v7** - routing with lazy loading
+- **Recharts** - beautiful charts
+- **React Toastify** - notifications
+- **Axios** - HTTP client
+
+## 📁 Project Architecture
+
+```
+
 src/
-├── app/           # Конфигурация приложения
-├── entities/      # Бизнес-сущности (погода)
-├── features/      # Функциональные возможности (поиск, геолокация)
-├── pages/         # Страницы приложения
-├── shared/        # Переиспользуемые компоненты и утилиты
-└── widgets/       # Составные компоненты
-```
+├── app/ # Application configuration
+├── entities/ # Business entities (weather)
+├── features/ # Features (search, geolocation)
+├── pages/ # Application pages
+├── shared/ # Reusable components and utilities
+└── widgets/ # Composite components
 
-## 🎯 Скрипты
+````
+
+## 🎯 Scripts
 
 ```bash
-npm run dev      # Запуск development сервера
-npm run build    # Сборка для production
-npm run preview  # Предварительный просмотр build
-npm run lint     # Проверка ESLint
-```
+npm run dev
+npm run build
+npm run preview
+npm run lint
+````
 
 ### ESLint
 
-Проект настроен с современными правилами для TypeScript и React:
+Project is configured with modern rules for TypeScript and React:
 
-- React Hooks правила
-- TypeScript strict режим
-- Автоматическое форматирование
+- React Hooks rules
+- TypeScript strict mode
+- Automatic formatting
 
 ### TypeScript
 
-- Строгий режим включен
-- Path mapping для удобных импортов
-- Полное покрытие типами
+- Strict mode enabled
+- Path mapping for convenient imports
+- Full type coverage
 
 ### State Management
 
-Использует Zustand для простого и эффективного управления состоянием:
+Uses Zustand for simple and efficient state management:
 
-- Автоматическая отмена запросов при новых поисках
-- Нормализация данных от API
-- Централизованная обработка ошибок
+- Automatic request cancellation on new searches
+- API data normalization
+- Centralized error handling
 
-## 📱 Поддерживаемые браузеры
+## 📱 Supported Browsers
 
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
 - Edge 90+
 
-## 🤝 Вклад в проект
+## 🤝 Contributing
 
-Приветствуются любые предложения по улучшению! Пожалуйста:
+All improvement suggestions are welcome! Please:
 
-1. Форкните репозиторий
-2. Создайте feature ветку
-3. Внесите изменения
-4. Создайте Pull Request
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Create a Pull Request
 
-## 📄 Лицензия
+## 📄 License
 
-MIT License - смотрите файл [LICENSE](LICENSE) для деталей.
+MIT License - see [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Автор
+## 👨‍💻 Author
 
-**Анатолий Гладченко**
+**Anatoly Gladchenko**
 
 - GitHub: [@ASGladchenko](https://github.com/ASGladchenko)
 
 ---
 
-_Сделано с ❤️ и современными технологиями_
+_Made with ❤️ and modern technologies_
