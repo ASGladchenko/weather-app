@@ -1,73 +1,133 @@
-# React + TypeScript + Vite
+# 🌤️ Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 👋 Добро пожаловать!
 
-Currently, two official plugins are available:
+Это приложение демонстрирует:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🏗️ **Feature-Sliced Design** архитектуру
+- 🔥 **React 18** с современными хуками
+- 💎 **TypeScript** для типобезопасности
+- ⚡ **Vite** для быстрой разработки
+- 🗂️ **Zustand** для управления состоянием
 
-## React Compiler
+## ✨ Особенности
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 📍 **Автоопределение местоположения** через Geolocation API
+- 🌡️ **Текущая погода** с детальной информацией
+- 📊 **12-часовой прогноз** с интерактивным графиком
+- 📅 **7-дневный прогноз** с подробностями
 
-## Expanding the ESLint configuration
+### Предварительные требования
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 20.19+ или 22.12+
+- npm или yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Установка
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# Клонировать репозиторий
+git clone https://github.com/ASGladchenko/weather-app.git
+cd weather-app
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Установить зависимости
+npm install
+
+# Создать .env файл и добавить API ключ
+echo "VITE_OPENWEATHER_API_KEY=ваш_api_ключ_openweather" > .env
+
+# Запустить dev сервер
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Получение API ключа OpenWeather
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Зарегистрируйтесь на [OpenWeatherMap](https://openweathermap.org/api)
+2. Получите бесплатный API ключ
+3. Добавьте его в файл `.env`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Основные технологии
+
+- **React 18** - UI библиотека с современными возможностями
+- **TypeScript 5.9** - статическая типизация
+- **Vite** - быстрый build tool
+- **Zustand** - легковесное управление состоянием
+
+### Дополнительные библиотеки
+
+- **React Router v7** - маршрутизация с lazy loading
+- **Recharts** - красивые графики
+- **React Toastify** - уведомления
+- **Axios** - HTTP клиент
+
+## 📁 Архитектура проекта
+
 ```
+src/
+├── app/           # Конфигурация приложения
+├── entities/      # Бизнес-сущности (погода)
+├── features/      # Функциональные возможности (поиск, геолокация)
+├── pages/         # Страницы приложения
+├── shared/        # Переиспользуемые компоненты и утилиты
+└── widgets/       # Составные компоненты
+```
+
+## 🎯 Скрипты
+
+```bash
+npm run dev      # Запуск development сервера
+npm run build    # Сборка для production
+npm run preview  # Предварительный просмотр build
+npm run lint     # Проверка ESLint
+```
+
+### ESLint
+
+Проект настроен с современными правилами для TypeScript и React:
+
+- React Hooks правила
+- TypeScript strict режим
+- Автоматическое форматирование
+
+### TypeScript
+
+- Строгий режим включен
+- Path mapping для удобных импортов
+- Полное покрытие типами
+
+### State Management
+
+Использует Zustand для простого и эффективного управления состоянием:
+
+- Автоматическая отмена запросов при новых поисках
+- Нормализация данных от API
+- Централизованная обработка ошибок
+
+## 📱 Поддерживаемые браузеры
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## 🤝 Вклад в проект
+
+Приветствуются любые предложения по улучшению! Пожалуйста:
+
+1. Форкните репозиторий
+2. Создайте feature ветку
+3. Внесите изменения
+4. Создайте Pull Request
+
+## 📄 Лицензия
+
+MIT License - смотрите файл [LICENSE](LICENSE) для деталей.
+
+## 👨‍💻 Автор
+
+**Анатолий Гладченко**
+
+- GitHub: [@ASGladchenko](https://github.com/ASGladchenko)
+
+---
+
+_Сделано с ❤️ и современными технологиями_

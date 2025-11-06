@@ -1,4 +1,4 @@
-import { forwardRef, useCallback } from 'react';
+import { forwardRef } from 'react';
 
 import { cn } from '@/shared/utils';
 
@@ -8,12 +8,9 @@ import './styles.scss';
 
 export const Input = forwardRef<HTMLInputElement, BaseInputProps>(
   ({ onChange, className, ...props }, ref) => {
-    const handleChange = useCallback(
-      (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value, e);
-      },
-      [onChange]
-    );
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e.target.value, e);
+    };
 
     const inputClassName = cn('input', className);
 
