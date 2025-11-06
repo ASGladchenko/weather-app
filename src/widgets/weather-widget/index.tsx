@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import { SearchForm } from '@/features';
 import { TodayCard, useWeatherStore, WeekForecastCard, DailyForecastCard } from '@/entities';
 
@@ -8,14 +6,11 @@ import './styles.scss';
 export const WeatherWidget = ({}) => {
   const { error, data, status } = useWeatherStore();
 
-  const todayData = useMemo(
-    () => (data ? { current: data.current, city: data.city } : null),
-    [data]
-  );
+  const todayData = data ? { current: data.current, city: data.city } : null;
 
-  const weekData = useMemo(() => (data ? { daily: data.daily } : null), [data]);
+  const weekData = data ? { daily: data.daily } : null;
 
-  const hourlyData = useMemo(() => (data ? { hourly: data.hourly } : null), [data]);
+  const hourlyData = data ? { hourly: data.hourly } : null;
 
   return (
     <div className="weather-widget">
