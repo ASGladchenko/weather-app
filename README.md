@@ -57,17 +57,18 @@ npm run dev
 
 ## 📁 Project Architecture
 
+
 ```
 
+```
 src/
-├── app/ # Application configuration
-├── entities/ # Business entities (weather)
-├── features/ # Features (search, geolocation)
-├── pages/ # Application pages
-├── shared/ # Reusable components and utilities
-└── widgets/ # Composite components
-
-````
+├── app/ #Application configuration
+├── entities/ #Business entities (weather)
+├── features/ #Features (search, geolocation)
+├── pages/ #Application pages
+├── shared/ #Reusable components and utilities
+└── widgets/ #Composite components
+```
 
 ## 🎯 Scripts
 
@@ -76,7 +77,7 @@ npm run dev
 npm run build
 npm run preview
 npm run lint
-````
+```
 
 ### ESLint
 
@@ -129,3 +130,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ---
 
 _Made with ❤️ and modern technologies_
+
+```
+
+```
